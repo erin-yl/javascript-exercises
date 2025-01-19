@@ -22,17 +22,6 @@ function createCalendar(month) {
       break;
   }
 
-  if (month === "February") {
-    days = 28;
-  } else if (
-    month === "April" ||
-    month === "June" ||
-    month === "September" ||
-    month === "November"
-  ) {
-    days = 30;
-  }
-
   list.textContent = "";
   h1.textContent = month;
   for (let i = 1; i <= days; i++) {
