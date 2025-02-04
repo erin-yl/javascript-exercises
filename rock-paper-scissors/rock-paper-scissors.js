@@ -1,12 +1,12 @@
 // Pseudocode:
 // User inputs their choice of rock, paper or scissors
 // Computer returns a choice of rock, paper or scissors
-// If user inputs rock and computer returns scissors, print "You win!"
-// If user inputs rock and computer returns paper, print "You lose!"
-// If user inputs scissors and computer returns paper, print "You win!"
-// If user inputs scissors and computer returns rock, print "You lose!"
-// If user inputs paper and computer returns rock, print "You win!"
-// If user inputs paper and computer returns scissors, print "You lose!"
+// If user inputs rock and computer returns scissors, print "You win! Rock beats scissors."
+// If user inputs rock and computer returns paper, print "You lose! Paper beats rock."
+// If user inputs scissors and computer returns paper, print "You win! Scissors beat paper."
+// If user inputs scissors and computer returns rock, print "You lose! Rock beats scissors."
+// If user inputs paper and computer returns rock, print "You win! Paper beats rock."
+// If user inputs paper and computer returns scissors, print "You lose! Scissors beat paper."
 // Otherwise print "It's even."
 
 let humanScore = 0;
@@ -39,21 +39,27 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
   if (
-    (humanSelection === "rock" && computerSelection === "scissors") ||
-    (humanSelection === "scissors" && computerSelection === "paper") ||
-    (humanSelection === "paper" && computerSelection === "rock")
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock")
   ) {
-    console.log("You win! " + humanSelection.charAt(0).toUpperCase() + humanSelection.slice(1) + " beats " + computerSelection);
+    console.log("You win! " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beats " + computerChoice + ".");
   } else if (
-    (humanSelection === "rock" && computerSelection === "paper") ||
-    (humanSelection === "scissors" && computerSelection === "rock") ||
-    (humanSelection === "paper" && computerSelection === "scissors")
+    (humanChoice === "rock" && computerChoice === "paper") ||
+    (humanChoice === "scissors" && computerChoice === "rock")
   ) {
-    console.log("You lose! " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + " beats " + humanSelection);
-    } else if (humanSelection === computerSelection) {
+    console.log("You lose! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice + ".");
+  } else if (
+    (humanChoice === "scissors" && computerChoice === "paper") 
+  ) {
+    console.log("You win! " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beat " + computerChoice + ".");
+  } else if (
+    (humanChoice === "paper" && computerChoice === "scissors")
+  ) {
+    console.log("You lose! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beat " + humanChoice + "."); 
+  } else if (humanChoice === computerChoice) {
     console.log("It's even.");
   } else {
-    console.log("Please try again.");
+    return;
   }
 }
 
