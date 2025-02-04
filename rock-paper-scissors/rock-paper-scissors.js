@@ -15,6 +15,9 @@ let computerScore = 0;
 const computerChoice = Math.floor(Math.random() * 3);
 const humanChoice = prompt("Enter your choice: ");
 
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
 function getHumanChoice() {
   if (humanChoice.toLowerCase() === "rock") {
     return "rock";
@@ -43,27 +46,29 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "paper" && computerChoice === "rock")
   ) {
     console.log("You win! " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beats " + computerChoice + ".");
+    console.log("Your score: " + (humanScore + 1) + ". Computer's score: " + computerScore + ".");
   } else if (
     (humanChoice === "rock" && computerChoice === "paper") ||
     (humanChoice === "scissors" && computerChoice === "rock")
   ) {
     console.log("You lose! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice + ".");
+    console.log("Your score: " + humanScore + ". Computer's score: " + (computerScore + 1) + ".");
   } else if (
     (humanChoice === "scissors" && computerChoice === "paper") 
   ) {
     console.log("You win! " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beat " + computerChoice + ".");
+    console.log("Your score: " + (humanScore + 1) + ". Computer's score: " + computerScore + ".");
   } else if (
     (humanChoice === "paper" && computerChoice === "scissors")
   ) {
     console.log("You lose! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beat " + humanChoice + "."); 
+    console.log("Your score: " + humanScore + ". Computer's score: " + (computerScore + 1) + ".");
   } else if (humanChoice === computerChoice) {
     console.log("It's even.");
+    console.log("Your score: " + humanScore + ". Computer's score: " + computerScore + ".");
   } else {
     return;
   }
 }
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
