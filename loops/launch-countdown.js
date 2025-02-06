@@ -8,7 +8,7 @@ while (i >= 0) {
   if (i === 10) {
     para.textContent = `Countdown ${i}`;
   } else if (i === 0) {
-    para.textContent = `Blast off!`;
+    para.textContent = 'Blast off!';
   } else {
     para.textContent = i;
   }
