@@ -1,72 +1,59 @@
-// Pseudocode:
-// Human inputs their choice of rock, paper, or scissors
-// Otherwise show "Please enter rock, paper, or scissors."
-// Computer returns a choice of rock, paper, or scissors
-// If human wins, print "You win! [human choice] beats [computer choice]."
-// If computer wins, print "You lose! [computer choice] beats [human choice]."
-// Otherwise show "It's even."
-// Play 5 rounds, calculate scores, and declare a final winner
-
 let humanScore = 0;
 let computerScore = 0;
+const choices = ["rock", "paper", "scissors"]
 
-function getHumanChoice() {
-  let humanInput = prompt("Rock, paper, or scissors?").toLowerCase();
-  if (humanInput !== "rock" && humanInput !== "paper" && humanInput !== "scissors") {
-    humanInput = prompt("Please enter rock, paper, or scissors.").toLowerCase();
-    return humanInput;
-  } else {
-    return humanInput;
-  } 
-}
+const container = document.createElement("div");
+document.body.appendChild(container);
+
+const resultDiv = document.createElement("div");
+resultDiv.style.marginTop = "20px";
+container.appendChild(resultDiv);
+
+const resultMessage = document.createElement("p");
+const score = document.createElement("p");
+const winnerMessage = document.createElement("p");
+
+resultDiv.appendChild(resultMessage);
+resultDiv.appendChild(score);
+resultDiv.appendChild(winnerMessage);
+
+choices.forEach(humanChoice => {
+  const button = document.createElement("button");
+  button.textContent = humanChoice;
+  button.addEventListener("click", () => playRound(humanChoice, getComputerChoice()));
+  container.appendChild(button);
+});
 
 function getComputerChoice() {
-  const randomNum = Math.floor(Math.random() * 3);
-  if (randomNum === 0) {
-    return "rock";
-  } else if (randomNum === 1) {
-    return "paper";
-  } else {
-    return "scissors";
-  }
+  return choices[Math.floor(Math.random() * 3)];
 }
 
 function playRound(humanChoice, computerChoice) {
+  const winConditions = {
+    rock: "scissors",
+    paper: "rock",
+    scissors: "paper"
+  };
+
   if (
-    (humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "paper" && computerChoice === "rock") ||
-    (humanChoice === "scissors" && computerChoice === "paper") 
+    computerChoice === winConditions[humanChoice] 
   ) {
-    console.log("You win! " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beats " + computerChoice + ".");
     humanScore++;
-  } else if (
-    (humanChoice === "rock" && computerChoice === "paper") ||
-    (humanChoice === "scissors" && computerChoice === "rock") ||
-    (humanChoice === "paper" && computerChoice === "scissors")
-  ) {
-    console.log("You lose! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice + ".");
-    computerScore++;
+    resultMessage.textContent = `You win! ${capitalize(humanChoice)} beats ${computerChoice}.`;
   } else if (humanChoice === computerChoice) {
-    console.log("It's even.");
+    resultMessage.textContent = `It's a tie! Both chose ${humanChoice}.`;
+  } else {
+    computerScore++;
+    resultMessage.textContent = `You lose! ${capitalize(computerChoice)} beats ${humanChoice}.`;
   }
-  console.log("Your score: " + humanScore + ". Computer's score: " + computerScore + ".");
-}
+  
+  score.textContent = `Your score: ${humanScore}. Computer's score: ${computerScore}`;
 
-function playGame() {
-  for (let round = 0; round < 5; round++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
-  console.log("Your final score: " + humanScore + ". Computer's final score: " + computerScore + ".")
-
-  if (humanScore > computerScore) {
-    console.log("The winner is you!");
-  } else if (computerScore > humanScore) {
-    console.log("The winner is computer!");
-  } else if (humanScore === computerScore) {
-    console.log("It's even.");
+  if (humanScore === 5 || computerScore === 5) {
+    winnerMessage.textContent = humanScore === 5 ? "You win the game!" : "Computer wins the game!";
   }
 }
 
-playGame();
+function capitalize(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
