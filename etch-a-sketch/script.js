@@ -4,9 +4,14 @@ const button = document.querySelector(".button");
 for (let i = 0; i < 16 * 16; i++) {
   const squareDiv = document.createElement("div");
   squareDiv.classList.add("square");
-
+  squareDiv.style.backgroundColor = "rgba(243, 216, 199, 0)";
+  let currentOpacity = 0;
+  
   squareDiv.addEventListener("mouseover", () => {
-    squareDiv.style.backgroundColor = "#f3d8c7";
+    if (currentOpacity < 1) {
+      currentOpacity += 0.1;
+      squareDiv.style.backgroundColor = `rgba(243, 216, 199, ${currentOpacity})`;
+    }
   });
 
   container.appendChild(squareDiv);
@@ -29,6 +34,7 @@ button.addEventListener("click", () => {
     squareDiv.classList.add("square");
     squareDiv.style.width = squareSize;
     squareDiv.style.height = squareSize;
+    
 
     squareDiv.addEventListener("mouseover", () => {
       squareDiv.style.backgroundColor = "#f3d8c7";
