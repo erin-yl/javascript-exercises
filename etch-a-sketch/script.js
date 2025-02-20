@@ -4,19 +4,36 @@ const button = document.querySelector(".button");
 for (let i = 0; i < 16 * 16; i++) {
   const squareDiv = document.createElement("div");
   squareDiv.classList.add("square");
-  container.appendChild(squareDiv);
 
   squareDiv.addEventListener("mouseover", () => {
     squareDiv.style.backgroundColor = "#f3d8c7";
   });
+
+  container.appendChild(squareDiv);
 }
 
 button.addEventListener("click", () => {
-  let num = prompt("Please enter a number less than 100: ", "");
+  let num;
+  
+  do {
+    num = prompt("Enter a number between 1 and 100:", "");
+    num = parseInt(num);
+  } while (isNaN(num) || num <= 0 || num > 100);
 
-  if ( num < 0 || num > 100 || !Number.isInteger(num)) {
-    num = prompt("Please enter a valid number: ", "")
-  } else {
-    document.body.removeChild(container);
+  container.innerHTML = "";
+
+  let squareSize = 600 / num + "px";
+
+  for (let i = 0; i < num * num; i++) {
+    const squareDiv = document.createElement("div");
+    squareDiv.classList.add("square");
+    squareDiv.style.width = squareSize;
+    squareDiv.style.height = squareSize;
+
+    squareDiv.addEventListener("mouseover", () => {
+      squareDiv.style.backgroundColor = "#f3d8c7";
+    });
+
+    container.appendChild(squareDiv);
   }
 });
