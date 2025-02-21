@@ -29,3 +29,10 @@ for (let key in salaries) {
 }
 
 // Exercise four: Multiply numeric property values by 2
+function multiplyNumeric(obj) {
+  for (let key in obj) {
+    if (typeof obj[key] === "number") {
+      obj[key] *= 2;
+    }
+  }
+}
