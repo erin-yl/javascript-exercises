@@ -1,13 +1,13 @@
-// Exercise one: Hello, object
+// Exercise 1
 let user = {
-  name: "John",
-  surname: "Smith",
+  name: 'John',
+  surname: 'Smith',
 }
 
-user.name = "Pete";
+user.name = 'Pete';
 delete user.name;
 
-// Exercise two: Check for emptiness
+// Exercise 2
 function isEmpty(obj) {
   for (let key in obj) {
     return false;
@@ -15,7 +15,7 @@ function isEmpty(obj) {
   return true;
 }
 
-// Exercise three: Sum object properties
+// Exercise 3
 let salaries = {
   John: 100,
   Ann: 160,
@@ -28,16 +28,16 @@ for (let key in salaries) {
   return sum;
 }
 
-// Exercise four: Multiply numeric property values by 2
+// Exercise 4
 function multiplyNumeric(obj) {
   for (let key in obj) {
-    if (typeof obj[key] === "number") {
+    if (typeof obj[key] === 'number') {
       obj[key] *= 2;
     }
   }
 }
 
-// Exercise five
+// Exercise 5
 const cat = {
   name : 'Bertie',
   breed : 'Cymric',
@@ -51,4 +51,21 @@ const catName = cat.name;
 cat.greeting();
 cat.color = 'black';
 
-// Exercise six
+// Exercise 6
+let bandInfo;
+
+const band = {
+  name: 'Echo',
+  nationality: 'Taiwan',
+  genre: 'indie rock',
+  members: 5,
+  formed: 1999,
+  split: false,
+  albums: [
+    {name: 'Bastille Day', released: 2007},
+    {name: 'Day1', released: 2011},
+  ]
+}
+
+bandInfo = `${band.name} is an ${band.genre} band from ${band.nationality} formed in ${band.formed}.
+Their album ${band.albums[0].name} was released on ${band.albums[0].released}.`;
