@@ -79,5 +79,3 @@ function Cat(name, breed, color) {
     console.log(`Hello, said ${this.name} from ${this.breed}.`);
   }
 }
-
-// Exercise 8
