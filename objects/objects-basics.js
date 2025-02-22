@@ -69,3 +69,15 @@ const band = {
 
 bandInfo = `${band.name} is an ${band.genre} band from ${band.nationality} formed in ${band.formed}.
 Their album ${band.albums[0].name} was released on ${band.albums[0].released}.`;
+
+// Exercise 7
+function Cat(name, breed, color) {
+  this.name = name;
+  this.breed = breed;
+  this.color = color;
+  this.greeting = function() {
+    console.log(`Hello, said ${this.name} from ${this.breed}.`);
+  }
+}
+
+// Exercise 8
