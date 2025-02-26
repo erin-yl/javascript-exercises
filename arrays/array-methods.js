@@ -58,3 +58,9 @@ function Calculator() {
 
 // Exercise 7
 let names = users.map(user => user.name);
+
+// Exercise 8
+let userMapped = users.map(user => ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id,
+}))
