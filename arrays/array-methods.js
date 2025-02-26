@@ -26,3 +26,8 @@ function filterRangeInPlace(arr, a, b) {
 
 // Exercise 4
 arr.sort((a, b) => b - a);
+
+// Exercise 5
+function copySorted(arr) {
+  return arr.slice().sort();
+}
