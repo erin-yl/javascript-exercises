@@ -55,3 +55,6 @@ function Calculator() {
     this.methods[name] = func;
   }
 }
+
+// Exercise 7
+let names = users.map(user => user.name);
