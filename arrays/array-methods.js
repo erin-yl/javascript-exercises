@@ -23,3 +23,6 @@ function filterRangeInPlace(arr, a, b) {
     }
   }
 }
+
+// Exercise 4
+arr.sort((a, b) => b - a);
