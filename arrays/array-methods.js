@@ -31,3 +31,27 @@ arr.sort((a, b) => b - a);
 function copySorted(arr) {
   return arr.slice().sort();
 }
+
+// Exercise 6
+function Calculator() {
+  this.methods = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+  }
+
+  this.calculate = function(str) {
+    let [operand1, operator, operand2] = str.split(' ');
+    let a = +operand1;
+    let b = +operand2;
+
+    if (isNaN(a) || isNaN(b) || !(operator in this.methods)) {
+      return NaN;
+    }
+
+    return this.methods[operator](a, b);
+  }
+
+  this.addMethod = function(name, func) {
+    this.methods[name] = func;
+  }
+}
