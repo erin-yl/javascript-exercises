@@ -74,3 +74,8 @@ function sortByAge(users) {
 function getAverageAge(users) {
   return (users.reduce((sum, user) => sum + user.age, 0)) / users.length;
 }
+
+// Exercise 11
+function unique(arr) {
+  return arr.filter((el, index) => arr.indexOf(el) === index);
+}
