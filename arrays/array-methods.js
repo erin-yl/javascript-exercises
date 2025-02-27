@@ -79,3 +79,11 @@ function getAverageAge(users) {
 function unique(arr) {
   return arr.filter((el, index) => arr.indexOf(el) === index);
 }
+
+// Exercise 12
+function groupById(arr) {
+  return arr.reduce((obj, el) => {
+    obj[el.id] = el;
+    return obj;
+  }, {})
+}
