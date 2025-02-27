@@ -66,6 +66,11 @@ let userMapped = users.map(user => ({
 }))
 
 // Exercise 9
-function sortByAge(arr) {
-  arr.sort((a, b) => a.age - b.age);
+function sortByAge(users) {
+  users.sort((a, b) => a.age - b.age);
+}
+
+// Exercise 10
+function getAverageAge(users) {
+  return (users.reduce((sum, user) => sum + user.age, 0)) / users.length;
 }
