@@ -20,7 +20,7 @@ resultDiv.appendChild(winnerMessage);
 choices.forEach(humanChoice => {
   const button = document.createElement("button");
   button.textContent = humanChoice;
-  button.addEventListener("click", () => playRound(humanChoice, getComputerChoice()));
+  button.addEventListener("click", () => determineWinner(humanChoice, getComputerChoice()));
   container.appendChild(button);
 });
 
@@ -28,7 +28,7 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random() * 3)];
 }
 
-function playRound(humanChoice, computerChoice) {
+function determineWinner(humanChoice, computerChoice) {
   const winConditions = {
     rock: "scissors",
     paper: "rock",
