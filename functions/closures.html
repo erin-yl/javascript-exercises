@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Closures example</title>
+</head>
+<body>
+  <script>
+    function outer() {
+      const outerVar = "Hey I am an outer var";
+
+      function inner() {
+        const innerVar = "Hey I am an inner var";
+        console.log(innerVar);
+        console.log(outerVar);
+      }
+      return inner;
+    }
+    const innerFunction = outer();
+    innerFunction();
+  </script>
+</body>
+</html>
