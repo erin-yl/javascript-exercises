@@ -1,6 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
-const choices = ["rock", "paper", "scissors"]
+const choices = ["rock", "paper", "scissors"];
 
 const container = document.createElement("div");
 document.body.appendChild(container);
