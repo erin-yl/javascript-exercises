@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8">
 
-    <title>Our superheroes</title>
+<head>
+  <meta charset="utf-8">
 
-    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
+  <title>Our superheroes</title>
 
-  <body>
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
 
-      <header>
+<body>
+  <header>
 
-      </header>
+  </header>
 
-      <section>
+  <section>
 
-      </section>
+  </section>
 
-      <script>
+  <script>
+    async function populate() {
+      const requestURL =
+        "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+      const request = new Request(requestURL);
 
-      </script>
-  </body>
+      const response = await fetch(request);
+      const superHeroes = await response.json();
+
+      populateHeader(superHeroes);
+      populateHeroes(superHeroes);
+    }
+
+    function populateHeader(obj) {
+      const header = document.querySelector("header");
+      const myH1 = document.createElement("h1");
+      myH1.textContent = obj.squadName;
+      header.appendChild(myH1);
+
+      const myPara = document.createElement("p");
+      myPara.textContent = `Hometown: ${obj.homeTown} // Formed: ${obj.formed}`;
+      header.appendChild(myPara);
+    }
+  </script>
+</body>
+
 </html>
