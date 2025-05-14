@@ -6,7 +6,7 @@ for (let i = 0; i < 16 * 16; i++) {
   squareDiv.classList.add("square");
   squareDiv.style.backgroundColor = "rgba(243, 216, 199, 0)";
   let opacity = 0;
-  
+
   squareDiv.addEventListener("mouseover", () => {
     if (opacity < 1) {
       opacity += 0.1;
@@ -19,7 +19,7 @@ for (let i = 0; i < 16 * 16; i++) {
 
 button.addEventListener("click", () => {
   let num;
-  
+
   do {
     num = prompt("Enter a number between 1 and 100:", "");
     num = parseInt(num);
@@ -36,7 +36,7 @@ button.addEventListener("click", () => {
     squareDiv.style.height = squareSize;
     squareDiv.style.backgroundColor = "rgba(243, 216, 199, 0)";
     let opacity = 0;
-    
+
     squareDiv.addEventListener("mouseover", () => {
       if (opacity < 1) {
         opacity += 0.1;
